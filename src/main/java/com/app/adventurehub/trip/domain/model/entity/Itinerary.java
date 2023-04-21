@@ -1,4 +1,4 @@
-package com.app.adventurehub.user.domain.model.entity;
+package com.app.adventurehub.trip.domain.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
