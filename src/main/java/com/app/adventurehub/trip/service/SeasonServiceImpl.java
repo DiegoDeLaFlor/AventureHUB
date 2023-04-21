@@ -5,10 +5,11 @@ import com.app.adventurehub.trip.domain.model.enumeration.Seasons;
 import com.app.adventurehub.trip.domain.persistence.SeasonRepository;
 import com.app.adventurehub.trip.domain.service.SeasonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
-
+@Service
 public class SeasonServiceImpl implements SeasonService {
     @Autowired
     private final SeasonRepository seasonRepository;
