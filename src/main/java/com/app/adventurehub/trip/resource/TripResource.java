@@ -12,5 +12,5 @@ public class TripResource {
     private String status;
     private String name;
     private String description;
-    private Float price;
+    private int price;
 }

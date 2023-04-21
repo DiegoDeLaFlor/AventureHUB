@@ -23,13 +23,13 @@ public class TripController {
         this.mapper = mapper;
     }
 
-    //@GetMapping("trips")
-    //public List<TripResource> getAllTripById(){
-    //    return mapper.toResourceList(tripService.GetAll());
-    //}
+    @GetMapping("trips")
+    public List<TripResource> getAllTripById(){
+        return mapper.toResourceList(tripService.GetAll());
+    }
 
-    @GetMapping("trips/{trip}")
-    public List<TripResource> getTripByPrice(@PathVariable Float price){
+    @GetMapping("{trip}")
+    public List<TripResource> getTripByPrice(@PathVariable int price){
         return mapper.toResourceList(tripService.getTripByPrice(price));
     }
     @PostMapping

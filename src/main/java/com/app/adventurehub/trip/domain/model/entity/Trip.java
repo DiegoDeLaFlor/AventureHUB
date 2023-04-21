@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -30,11 +31,11 @@ public class Trip extends AuditModel {
     private String description;
 
     @NotNull
-    @NotBlank
-    private Float price;
+    //@DecimalMin(value = "0.0", inclusive = false)
+    private int price;
 
-    @ManyToOne()
-    @JoinColumn(name = "season_id", nullable = false)
-    @JsonIgnore
-    private Season season;
+    //@ManyToOne()
+    //@JoinColumn(name = "season_id", nullable = false)
+    //@JsonIgnore
+    //private Season season;
 }

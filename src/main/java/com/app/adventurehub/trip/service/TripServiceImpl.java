@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -33,8 +34,8 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public List<Trip> getTripByPrice(Float price) {
-        return tripRepository.findTripByPrice(price);
+    public List<Trip> getTripByPrice(int price) {
+        return tripRepository.findAllByPrice(price);
     }
 
     @Override
@@ -53,6 +54,9 @@ public class TripServiceImpl implements TripService {
 
         if(tripWithName != null)
             throw new ResourceValidationException(ENTITY, "Name already exists");
+
+        trip.setCreatedAt(new Date());
+        trip.setUpdatedAt(new Date());
 
         return tripRepository.save(trip);
 
