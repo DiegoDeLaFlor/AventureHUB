@@ -1,6 +1,6 @@
 package com.app.adventurehub.trip.service;
 
-import com.app.adventurehub.trip.domain.model.entity.Itinerary;
+import com.app.adventurehub.shared.exception.ResourceValidationException;
 import com.app.adventurehub.trip.domain.model.entity.Trip;
 import com.app.adventurehub.trip.domain.persistence.TripRepository;
 import com.app.adventurehub.trip.domain.service.TripService;
@@ -8,8 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
+import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.util.List;
+import java.util.Set;
+
 
 @Service
 public class TripServiceImpl implements TripService {
@@ -41,7 +44,18 @@ public class TripServiceImpl implements TripService {
 
     @Override
     public Trip create(Trip trip) {
-        return null;
+        Set<ConstraintViolation<Trip>> violations = validator.validate(trip);
+
+        if(!violations.isEmpty())
+            throw new ResourceValidationException(ENTITY, violations);
+
+        Trip tripWithName = tripRepository.findByName(trip.getName());
+
+        if(tripWithName != null)
+            throw new ResourceValidationException(ENTITY, "Name already exists");
+
+        return tripRepository.save(trip);
+
     }
 
     @Override
