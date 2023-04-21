@@ -2,6 +2,8 @@ package com.app.adventurehub.trip.resource;
 
 import lombok.*;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @With
@@ -13,4 +15,6 @@ public class TripResource {
     private String name;
     private String description;
     private Float price;
+    private String start_date;
+    private String end_date;
 }

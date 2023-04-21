@@ -2,11 +2,13 @@ package com.app.adventurehub.trip.domain.model.entity;
 
 
 import com.app.adventurehub.shared.domain.model.AuditModel;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -28,8 +30,11 @@ public class Trip extends AuditModel {
     private String description;
 
     @NotNull
-    @DecimalMax(value = "10.2", inclusive = false)
+    @DecimalMin(value = "0.00", inclusive = false)
     private Float price;
+
+    private String start_date;
+    private String end_date;
 
     //@ManyToOne()
    // @JoinColumn(name = "season_id", nullable = false)

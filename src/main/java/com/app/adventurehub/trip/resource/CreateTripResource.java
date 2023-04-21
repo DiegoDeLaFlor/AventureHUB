@@ -5,6 +5,7 @@ import lombok.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -22,4 +23,7 @@ public class CreateTripResource {
     @NotNull
     @NotBlank
     private float price;
+
+    private Date start_date;
+    private Date end_date;
 }
