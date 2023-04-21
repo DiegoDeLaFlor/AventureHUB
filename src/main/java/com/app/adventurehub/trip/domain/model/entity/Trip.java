@@ -33,8 +33,8 @@ public class Trip extends AuditModel {
     @NotBlank
     private Float price;
 
-    @ManyToOne()
-    @JoinColumn(name = "season_id", nullable = false)
-    @JsonIgnore
-    private Season season;
+    //@ManyToOne()
+    //@JoinColumn(name = "season_id", nullable = false)
+    //@JsonIgnore
+    //private Season season;
 }
