@@ -28,8 +28,9 @@ public class TripController {
         return mapper.toResourceList(tripService.GetAll());
     }
 
-    @GetMapping("{trip}")
-    public List<TripResource> getTripByPrice(@PathVariable Float price){
+    @GetMapping("/{price}")
+    public List<TripResource> getTripByPrice(@PathVariable(value ="price") Float price){
+        System.out.println(price);
         return mapper.toResourceList(tripService.getTripByPrice(price));
     }
     @PostMapping
