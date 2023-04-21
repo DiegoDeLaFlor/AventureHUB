@@ -9,6 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface TripRepository extends JpaRepository<Trip, Long> {
-    List<Trip> findTripByPrice(float price);
+    List<Trip> findTripByPrice(Float price);
     Trip findByName(String name);
 }

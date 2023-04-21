@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TripService {
     List<Trip> GetAll();
-    List<Trip> getTripByPrice(float price);
+    List<Trip> getTripByPrice(Float price);
     Trip getById(Long tripId);
     Trip create(Trip trip);
     Trip update(Long id, Trip trip);

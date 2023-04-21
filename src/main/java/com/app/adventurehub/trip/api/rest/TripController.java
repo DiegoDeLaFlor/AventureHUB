@@ -1,5 +1,6 @@
 package com.app.adventurehub.trip.api.rest;
 
+import com.app.adventurehub.trip.domain.model.entity.Trip;
 import com.app.adventurehub.trip.domain.service.TripService;
 import com.app.adventurehub.trip.mapping.TripMapper;
 import com.app.adventurehub.trip.resource.CreateTripResource;
@@ -28,7 +29,7 @@ public class TripController {
     //}
 
     @GetMapping("trips/{trip}")
-    public List<TripResource> getTripByPrice(@PathVariable float price){
+    public List<TripResource> getTripByPrice(@PathVariable Float price){
         return mapper.toResourceList(tripService.getTripByPrice(price));
     }
     @PostMapping
