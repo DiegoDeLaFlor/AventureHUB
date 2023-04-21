@@ -2,10 +2,10 @@ package com.app.adventurehub.trip.domain.model.entity;
 
 
 import com.app.adventurehub.shared.domain.model.AuditModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -32,4 +32,9 @@ public class Trip extends AuditModel {
     @NotNull
     @NotBlank
     private float price;
+
+    @ManyToOne()
+    @JoinColumn(name = "season_id", nullable = false)
+    @JsonIgnore
+    private Season season;
 }
