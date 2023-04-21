@@ -1,14 +1,12 @@
 package com.app.adventurehub.user.domain.model.entity;
 
-
-import com.app.adventurehub.shared.domain.model.AuditModel;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.temporal.ValueRange;
 
 @Getter
 @Setter
@@ -16,8 +14,8 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "trips")
-public class Trip extends AuditModel {
+@Table(name = "destination")
+public class Destination {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,11 +23,6 @@ public class Trip extends AuditModel {
     @NotNull
     @NotBlank
     @Size(max = 255)
-    private String status;
     private String name;
     private String description;
-
-    @NotNull
-    @NotBlank
-    private float price;
 }
