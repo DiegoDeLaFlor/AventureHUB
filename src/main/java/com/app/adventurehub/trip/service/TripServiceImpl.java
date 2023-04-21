@@ -34,7 +34,7 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public List<Trip> getTripByPrice(int price) {
+    public List<Trip> getTripByPrice(Float price) {
         return tripRepository.findAllByPrice(price);
     }
 

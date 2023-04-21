@@ -6,9 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Getter
 @Setter
@@ -30,7 +28,7 @@ public class Trip extends AuditModel {
     private String description;
 
     @NotNull
-    @NotBlank
+    @DecimalMax(value = "10.2", inclusive = false)
     private Float price;
 
     @ManyToOne()

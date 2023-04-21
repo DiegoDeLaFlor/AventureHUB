@@ -29,7 +29,7 @@ public class TripController {
     }
 
     @GetMapping("{trip}")
-    public List<TripResource> getTripByPrice(@PathVariable int price){
+    public List<TripResource> getTripByPrice(@PathVariable Float price){
         return mapper.toResourceList(tripService.getTripByPrice(price));
     }
     @PostMapping

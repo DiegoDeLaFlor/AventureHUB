@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface TripRepository extends JpaRepository<Trip, Long> {
-    List<Trip> findAllByPrice(int price);
+    List<Trip> findAllByPrice(Float price);
     Trip findByName(String name);
 }
