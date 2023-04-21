@@ -1,9 +1,12 @@
 package com.app.adventurehub.trip.resource;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import lombok.*;
 
+@Getter
+@Setter
+@With
+@NoArgsConstructor
+@AllArgsConstructor
 public class TripResource {
     private Long id;
     private String status;

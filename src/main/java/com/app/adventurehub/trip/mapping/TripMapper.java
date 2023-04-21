@@ -22,8 +22,8 @@ public class TripMapper implements Serializable {
     public Trip toModel(CreateTripResource resource){
         return mapper.map(resource, Trip.class);
     }
-    public List<Trip> toResourceList(List<Trip> modelList){
-        return mapper.mapList(modelList, Trip.class);
+    public List<TripResource> toResourceList(List<Trip> modelList){
+        return mapper.mapList(modelList, TripResource.class);
     }
 
 }
