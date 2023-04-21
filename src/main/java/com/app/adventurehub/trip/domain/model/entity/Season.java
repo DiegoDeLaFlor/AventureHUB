@@ -26,4 +26,5 @@ public class Season {
     @Column(length = 20)
     private Seasons name;
 
+
 }
