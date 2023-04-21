@@ -1,6 +1,7 @@
 package com.app.adventurehub.trip.service;
 
 import com.app.adventurehub.shared.exception.ResourceValidationException;
+import com.app.adventurehub.trip.domain.model.entity.Season;
 import com.app.adventurehub.trip.domain.model.entity.Trip;
 import com.app.adventurehub.trip.domain.persistence.TripRepository;
 import com.app.adventurehub.trip.domain.service.TripService;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -38,6 +38,12 @@ public class TripServiceImpl implements TripService {
         return tripRepository.findAllByPrice(price);
     }
 
+
+    @Override
+    public List<Trip> getTripBySeason(String name) {
+        return tripRepository.findAllBySeason(name);
+    }
+
     @Override
     public Trip getById(Long tripId) {
         return null;
@@ -54,9 +60,6 @@ public class TripServiceImpl implements TripService {
 
         if(tripWithName != null)
             throw new ResourceValidationException(ENTITY, "Name already exists");
-
-        trip.setCreatedAt(new Date());
-        trip.setUpdatedAt(new Date());
 
         return tripRepository.save(trip);
 

@@ -17,7 +17,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "trips")
-public class Trip extends AuditModel {
+public class Trip{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,8 +36,10 @@ public class Trip extends AuditModel {
     private String start_date;
     private String end_date;
 
-    //@ManyToOne()
-   // @JoinColumn(name = "season_id", nullable = false)
-    //@JsonIgnore
-   // private Season season;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "season_id", nullable = false)
+    @JsonIgnore
+    private Season season_id;
+    private String season;
+
 }
