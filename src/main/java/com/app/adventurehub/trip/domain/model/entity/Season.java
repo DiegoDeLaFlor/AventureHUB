@@ -1,5 +1,6 @@
 package com.app.adventurehub.trip.domain.model.entity;
 
+import com.app.adventurehub.trip.domain.model.enumeration.Seasons;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,11 +22,8 @@ public class Season {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @NotBlank
-    @Size(max = 255)
-    private String name;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private Seasons name;
 
-    @OneToMany
-    private Set<Trip> trips = new HashSet<>();
 }
