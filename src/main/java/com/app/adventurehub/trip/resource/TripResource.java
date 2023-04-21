@@ -1,2 +1,4 @@
-package com.app.adventurehub.trip.resource;public class TripResource {
+package com.app.adventurehub.trip.resource;
+
+public class TripResource {
 }

@@ -1,4 +1,4 @@
-package com.acme.learningcenter.learning.mapping;
+package com.app.adventurehub.trip.mapping;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -6,17 +6,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration("learningMappingConfiguration")
 public class MappingConfiguration {
     @Bean
-    public StudentMapper studentMapper() {
-        return new StudentMapper();
+    public TripMapper tripMapper() {
+        return new TripMapper();
     }
 
     @Bean
-    public SkillMapper skillMapper() {
-        return new SkillMapper();
+    public CategoryMapper categoryMapper() {
+        return new CategoryMapper();
     }
 
-    @Bean
-    public CriterionMapper criterionMapper() {
-        return new CriterionMapper();
-    }
 }
