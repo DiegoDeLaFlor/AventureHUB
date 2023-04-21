@@ -31,8 +31,8 @@ public class Trip extends AuditModel {
     @DecimalMax(value = "10.2", inclusive = false)
     private Float price;
 
-    @ManyToOne()
-    @JoinColumn(name = "season_id", nullable = false)
-    @JsonIgnore
-    private Season season;
+    //@ManyToOne()
+   // @JoinColumn(name = "season_id", nullable = false)
+    //@JsonIgnore
+   // private Season season;
 }
