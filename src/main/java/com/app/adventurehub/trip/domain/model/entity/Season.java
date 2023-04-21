@@ -26,6 +26,6 @@ public class Season {
     @Size(max = 255)
     private String name;
 
-    //@OneToMany
-    //private Set<Trip> trips = new HashSet<>();
+    @OneToMany
+    private Set<Trip> trips = new HashSet<>();
 }
