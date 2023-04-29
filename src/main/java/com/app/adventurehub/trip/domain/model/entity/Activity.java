@@ -3,8 +3,6 @@ package com.app.adventurehub.trip.domain.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
@@ -12,8 +10,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "category")
-public class Category {
+@Table(name = "activities")
+public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,6 +19,7 @@ public class Category {
     @Column(nullable = false, length = 255)
     private String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.PERSIST)
-    private List<Trip> trips = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name="itinerary_id", nullable = false)
+    private Itinerary itinerary;
 }

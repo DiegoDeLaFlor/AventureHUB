@@ -8,8 +8,6 @@ import com.app.adventurehub.user.resource.AuthCredentialsResource;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @AllArgsConstructor
 public class AuthServiceImpl implements AuthService {
@@ -29,8 +27,5 @@ public class AuthServiceImpl implements AuthService {
         }
         return user;
     }
-    //@Override
-    //public List<User> findByBudgetTravelPackage(float value){
-    //    return
-    //}
+
 }

@@ -23,9 +23,11 @@ public class CreateTripResource {
 
     @NotNull
     @NotBlank
-    private float price;
+    private Double price;
 
     private Date start_date;
     private Date end_date;
-    private Season season;
+    private Long seasonId;
+    private Long destinationId;
+    private Long categoryId;
 }

@@ -33,4 +33,7 @@ public class SeasonMapper {
         mapper.addConverter(roleToString);
         return new PageImpl<>(mapper.mapList(modelList, SeasonResource.class), pageable, modelList.size());
     }
+    public List<SeasonResource> toResourceList(List<Season> modelList){
+        return mapper.mapList(modelList, SeasonResource.class);
+    }
 }

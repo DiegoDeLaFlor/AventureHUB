@@ -4,6 +4,7 @@ import com.app.adventurehub.trip.domain.model.enumeration.Seasons;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,10 +16,12 @@ import javax.persistence.*;
 public class Season {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long season_id;
+    private Long id;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
     private Seasons name;
 
+    @OneToMany(mappedBy = "season", cascade = CascadeType.ALL)
+    private List<Trip> trips;
 }

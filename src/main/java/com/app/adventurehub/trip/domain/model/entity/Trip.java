@@ -1,14 +1,11 @@
 package com.app.adventurehub.trip.domain.model.entity;
 
-
-import com.app.adventurehub.shared.domain.model.AuditModel;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.util.Date;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -17,29 +14,40 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "trips")
-public class Trip{
+public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @NotBlank
-    @Size(max = 255)
     private String status;
     private String name;
     private String description;
 
-    @NotNull
-    @DecimalMin(value = "0.00", inclusive = false)
-    private Float price;
+    @Column(precision = 10, scale = 2)
+    private Double price;
 
-    private String start_date;
-    private String end_date;
+    private Date start_date;
+    private Date end_date;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "destination_id", nullable = false)
+    private Destination destination;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "season_id", nullable = false)
     @JsonIgnore
-    private Season season_id;
-    private String season;
+    private Season season;
 
+    @OneToOne(mappedBy = "trip", cascade = CascadeType.ALL)
+    private TripDetails tripDetails;
+
+    @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL)
+    private Set<Itinerary> itineraries;
+
+    @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL)
+    private Set<Rating> ratings;
 }

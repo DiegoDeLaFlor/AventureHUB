@@ -6,7 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.temporal.ValueRange;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,9 +21,10 @@ public class Destination {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @NotBlank
-    @Size(max = 255)
+    @Column(nullable = false, length = 255)
     private String name;
     private String description;
+
+    @OneToMany(mappedBy = "destination", cascade = CascadeType.PERSIST)
+    private List<Trip> trips = new ArrayList<>();
 }
