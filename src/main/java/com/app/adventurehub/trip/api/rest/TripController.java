@@ -19,12 +19,10 @@ public class TripController {
     private final TripService tripService;
 
     private final TripMapper mapper;
-    private final DestinationMapper mapperDestination;
 
-    public TripController(TripService tripService, TripMapper mapper, DestinationMapper mapperDestination) {
+    public TripController(TripService tripService, TripMapper mapper) {
         this.tripService = tripService;
         this.mapper = mapper;
-        this.mapperDestination = mapperDestination;
     }
     @GetMapping
     @Operation(summary = "Get All Trips", tags = {"Trips"} )
@@ -51,8 +49,8 @@ public class TripController {
     }
     @GetMapping("/destination/{destination}")
     @Operation(summary = "Get Trip By Destination", tags = {"Trips"})
-    public List<DestinationResource> getTripByDestination(@PathVariable(value = "destination") String name){
+    public List<TripResource> getTripByDestination(@PathVariable(value = "destination") String name){
         System.out.println(name);
-        return mapperDestination.toResourceList(tripService.getTripByDestination(name));
+        return mapper.toResourceList(tripService.getTripByDestination(name));
     }
 }

@@ -1,7 +1,6 @@
 package com.app.adventurehub.trip.service;
 
 import com.app.adventurehub.shared.exception.ResourceValidationException;
-import com.app.adventurehub.trip.domain.model.entity.Destination;
 import com.app.adventurehub.trip.domain.model.entity.Trip;
 import com.app.adventurehub.trip.domain.persistence.SeasonRepository;
 import com.app.adventurehub.trip.domain.persistence.TripRepository;
@@ -41,7 +40,7 @@ public class TripServiceImpl implements TripService {
         return tripRepository.findAllBySeason(name);
     }
     @Override
-    public List<Destination> getTripByDestination(String name) {
+    public List<Trip> getTripByDestination(String name) {
         return tripRepository.findAllByDestination(name);
     }
     @Override

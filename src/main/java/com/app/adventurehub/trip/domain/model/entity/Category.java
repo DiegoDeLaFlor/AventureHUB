@@ -1,5 +1,6 @@
 package com.app.adventurehub.trip.domain.model.entity;
 
+import com.app.adventurehub.trip.domain.model.enumeration.Categories;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,8 +19,9 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 255)
-    private String name;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private Categories name;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.PERSIST)
     private List<Trip> trips = new ArrayList<>();

@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface SeasonService {
     void seed();
-    List<Season> getAll();}
+    List<Season> getAll();
+}

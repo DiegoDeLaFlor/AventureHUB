@@ -1,8 +1,12 @@
 package com.app.adventurehub.trip.mapping;
 
 import com.app.adventurehub.shared.mapping.EnhancedModelMapper;
+import com.app.adventurehub.trip.domain.model.entity.Category;
+import com.app.adventurehub.trip.domain.model.entity.Destination;
 import com.app.adventurehub.trip.domain.model.entity.Season;
 import com.app.adventurehub.trip.domain.model.entity.Trip;
+import com.app.adventurehub.trip.domain.persistence.CategoryRepository;
+import com.app.adventurehub.trip.domain.persistence.DestinationRepository;
 import com.app.adventurehub.trip.domain.persistence.SeasonRepository;
 import com.app.adventurehub.trip.resource.CreateTripResource;
 import com.app.adventurehub.trip.resource.TripResource;
@@ -19,6 +23,11 @@ public class TripMapper implements Serializable {
 
     @Autowired
     SeasonRepository seasonRepository;
+    @Autowired
+    CategoryRepository categoryRepository;
+
+    @Autowired
+    DestinationRepository destinationRepository;
 
     public TripResource toResource(Trip model){
         TripResource resource = new TripResource();
@@ -30,6 +39,8 @@ public class TripMapper implements Serializable {
         resource.setStart_date(model.getStart_date());
         resource.setEnd_date(model.getEnd_date());
         resource.setSeason(model.getSeason().getName());
+        resource.setCategory(model.getCategory().getName());
+        resource.setDestination(model.getDestination().getName());
         return resource;
     }
 
@@ -39,6 +50,16 @@ public class TripMapper implements Serializable {
             throw new RuntimeException("Season not found");
         }
 
+        Optional<Category> category = categoryRepository.findById(resource.getCategoryId());
+        if(!category.isPresent()){
+            throw new RuntimeException("Category not found");
+        }
+
+        Optional<Destination> destination = destinationRepository.findById(resource.getDestinationId());
+        if(!destination.isPresent()){
+            throw new RuntimeException("Destination not found");
+        }
+
         Trip trip = new Trip();
         trip.setName(resource.getName());
         trip.setDescription(resource.getDescription());
@@ -46,6 +67,9 @@ public class TripMapper implements Serializable {
         trip.setStart_date(resource.getStart_date());
         trip.setEnd_date(resource.getEnd_date());
         trip.setSeason(season.get());
+        trip.setCategory(category.get());
+        trip.setDestination(destination.get());
+
         return trip;
     }
 

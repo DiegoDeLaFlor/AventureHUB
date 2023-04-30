@@ -3,9 +3,10 @@ package com.app.adventurehub.trip.service;
 import com.app.adventurehub.trip.domain.model.entity.Itinerary;
 import com.app.adventurehub.trip.domain.service.ItineraryService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ItineraryServiceImpl implements ItineraryService {
     @Override
     public List<Itinerary> getAll() {

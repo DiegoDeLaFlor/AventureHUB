@@ -3,6 +3,7 @@ package com.app.adventurehub.trip.resource;
 import com.app.adventurehub.trip.domain.model.entity.Season;
 import lombok.*;
 
+import javax.print.attribute.standard.Destination;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

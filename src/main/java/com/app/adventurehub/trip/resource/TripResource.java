@@ -1,7 +1,7 @@
 package com.app.adventurehub.trip.resource;
 
-import com.app.adventurehub.trip.domain.model.entity.Category;
 import com.app.adventurehub.trip.domain.model.entity.Destination;
+import com.app.adventurehub.trip.domain.model.enumeration.Categories;
 import com.app.adventurehub.trip.domain.model.enumeration.Seasons;
 import lombok.*;
 
@@ -21,6 +21,7 @@ public class TripResource {
     private Date start_date;
     private Date end_date;
     private Seasons season;
-    private Destination destination;
-    private Category category;
+    private String destination;
+    private Categories category;
+
 }
