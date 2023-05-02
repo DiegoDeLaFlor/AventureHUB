@@ -1,7 +1,9 @@
 package com.app.adventurehub.trip.service;
 
 import com.app.adventurehub.shared.exception.ResourceValidationException;
+import com.app.adventurehub.trip.domain.model.entity.Season;
 import com.app.adventurehub.trip.domain.model.entity.Trip;
+import com.app.adventurehub.trip.domain.model.enumeration.Seasons;
 import com.app.adventurehub.trip.domain.persistence.SeasonRepository;
 import com.app.adventurehub.trip.domain.persistence.TripRepository;
 import com.app.adventurehub.trip.domain.service.TripService;
@@ -34,14 +36,15 @@ public class TripServiceImpl implements TripService {
     public List<Trip> getTripByPrice(Double price) {
         return tripRepository.findAllByPrice(price);
     }
-    @Override
-    public List<Trip> getTripBySeason(String name) {
 
-        return tripRepository.findAllBySeason(name);
+    @Override
+    public List<Trip> getTripBySeason(Seasons name) {
+        return tripRepository.findAllBySeasonName(name);
     }
+
     @Override
     public List<Trip> getTripByDestination(String name) {
-        return tripRepository.findAllByDestination(name);
+        return tripRepository.findAllByDestinationName(name);
     }
     @Override
     public Trip create(Trip trip) {
@@ -57,4 +60,5 @@ public class TripServiceImpl implements TripService {
 
         return tripRepository.save(trip);
     }
+
 }

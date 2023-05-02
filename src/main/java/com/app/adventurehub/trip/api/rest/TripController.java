@@ -1,5 +1,6 @@
 package com.app.adventurehub.trip.api.rest;
 
+import com.app.adventurehub.trip.domain.model.enumeration.Seasons;
 import com.app.adventurehub.trip.domain.service.TripService;
 import com.app.adventurehub.trip.mapping.DestinationMapper;
 import com.app.adventurehub.trip.mapping.TripMapper;
@@ -43,7 +44,7 @@ public class TripController {
     }
     @GetMapping("/season/{season}")
     @Operation(summary = "Get Trip By Season", tags = {"Trips"})
-    public List<TripResource> getTripBySeason(@PathVariable(value ="season") String name){
+    public List<TripResource> getTripBySeason(@PathVariable(value ="season") Seasons name){
         System.out.println(name);
         return mapper.toResourceList(tripService.getTripBySeason(name));
     }
